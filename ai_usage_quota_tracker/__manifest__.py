@@ -5,7 +5,7 @@
     'summary': 'Track daily AI token usage across providers and enforce quotas with alerts.',
     'author': 'Safwan Ahmad Saffi',
     'website': 'https://skysize.io',
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail', 'hr'],
     'data': [
         'security/ir.model.access.csv',
         'data/ir_cron_data.xml',

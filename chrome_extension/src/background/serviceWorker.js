@@ -56,20 +56,31 @@ async function syncToSkysize(platform, tokens) {
     const baseUrl = data[SKYSIZE_ODOO_URL_KEY] || DEFAULT_SKYSIZE_URL;
     const endpoint = `${baseUrl.replace(/\/$/, "")}/ai_tracker/log_usage`;
 
-    await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        jsonrpc: "2.0",
-        params: {
-          provider: platform,
-          model: platform,
-          tokens: tokens
-        }
-      })
+    const payload = JSON.stringify({
+      jsonrpc: "2.0",
+      params: {
+        provider: platform,
+        model: platform,
+        tokens: tokens
+      }
     });
+
+    try {
+      await fetch(endpoint, {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+        body: payload
+      });
+    } catch {
+      // Fallback with text/plain to bypass browser CORS preflight if server preflight headers are missing
+      await fetch(endpoint, {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "text/plain" },
+        body: payload
+      });
+    }
   } catch (err) {
     console.warn("Skysize Odoo sync failed:", err);
   }

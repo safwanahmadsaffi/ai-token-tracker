@@ -45,20 +45,29 @@
       const data = await chrome.storage.local.get(SKYSIZE_ODOO_URL_KEY);
       const baseUrl = data[SKYSIZE_ODOO_URL_KEY] || DEFAULT_SKYSIZE_URL;
       const endpoint = `${baseUrl.replace(/\/$/, "")}/ai_tracker/log_usage`;
-      await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          jsonrpc: "2.0",
-          params: {
-            provider: platform,
-            model: platform,
-            tokens
-          }
-        })
+      const payload = JSON.stringify({
+        jsonrpc: "2.0",
+        params: {
+          provider: platform,
+          model: platform,
+          tokens
+        }
       });
+      try {
+        await fetch(endpoint, {
+          method: "POST",
+          mode: "cors",
+          headers: { "Content-Type": "application/json" },
+          body: payload
+        });
+      } catch {
+        await fetch(endpoint, {
+          method: "POST",
+          mode: "cors",
+          headers: { "Content-Type": "text/plain" },
+          body: payload
+        });
+      }
     } catch (err) {
       console.warn("Skysize Odoo sync failed:", err);
     }

@@ -4,7 +4,16 @@ import json
 
 class AIUsageController(http.Controller):
 
-    @http.route('/ai_tracker/log_usage', type='json', auth='public', methods=['POST'], csrf=False)
+    @http.route('/ai_tracker/log_usage', type='http', auth='public', methods=['OPTIONS'], cors='*', csrf=False)
+    def log_usage_options(self, **kw):
+        headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+        }
+        return request.make_response('', headers=headers)
+
+    @http.route('/ai_tracker/log_usage', type='json', auth='public', methods=['POST'], cors='*', csrf=False)
     def log_usage(self, **post):
         """
         Endpoint for Chrome Extension to push token usage data.

@@ -1,0 +1,11 @@
+{
+  "name": "ai-token-tracker-monorepo",
+  "version": "1.0.0",
+  "description": "Unified AI Token Tracker: Odoo Backend Module & Chrome Extension",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix chrome_extension run build",
+    "watch": "npm --prefix chrome_extension run watch",
+    "setup": "npm --prefix chrome_extension install && npm --prefix chrome_extension run build"
+  }
+}

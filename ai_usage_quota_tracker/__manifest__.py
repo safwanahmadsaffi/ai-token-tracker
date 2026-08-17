@@ -3,7 +3,7 @@
     'version': '17.0.1.0.0',
     'category': 'Productivity',
     'summary': 'Track daily AI token usage across providers and enforce quotas with alerts.',
-    'author': 'Manus AI',
+    'author': 'Safwan Ahmad Saffi',
     'website': 'https://skysize.io',
     'depends': ['base', 'mail'],
     'data': [

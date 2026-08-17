@@ -12,6 +12,7 @@
     "esbuild": "^0.24.0"
   },
   "dependencies": {
+    "ai-token-tracker-monorepo": "file:..",
     "js-tiktoken": "^1.0.15",
     "jszip": "^3.10.1"
   }

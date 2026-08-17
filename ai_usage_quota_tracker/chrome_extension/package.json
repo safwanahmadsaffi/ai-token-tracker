@@ -1,0 +1,19 @@
+{
+  "name": "llm-artifact-crop-exporter-token-engine",
+  "version": "1.0.0",
+  "description": "Chrome MV3 extension: automated code file downloads, crop/format export toolbar, and multi-platform live token tracking for ChatGPT, Claude, DeepSeek and Gemini.",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch",
+    "icons": "node scripts/make-icons.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  },
+  "dependencies": {
+    "ai-token-tracker-monorepo": "file:..",
+    "js-tiktoken": "^1.0.15",
+    "jszip": "^3.10.1"
+  }
+}

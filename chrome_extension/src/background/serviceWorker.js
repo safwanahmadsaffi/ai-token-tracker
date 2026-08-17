@@ -65,24 +65,13 @@ async function syncToSkysize(platform, tokens) {
       }
     });
 
-    try {
-      await fetch(endpoint, {
-        method: "POST",
-        mode: "cors",
-        headers: { "Content-Type": "application/json" },
-        body: payload
-      });
-    } catch {
-      // Fallback with text/plain to bypass browser CORS preflight if server preflight headers are missing
-      await fetch(endpoint, {
-        method: "POST",
-        mode: "cors",
-        headers: { "Content-Type": "text/plain" },
-        body: payload
-      });
-    }
+    await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: payload
+    });
   } catch (err) {
-    console.warn("Skysize Odoo sync failed:", err);
+    console.warn("Skysize Odoo sync notice:", err);
   }
 }
 

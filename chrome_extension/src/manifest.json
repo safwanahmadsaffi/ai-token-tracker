@@ -25,7 +25,9 @@
     "https://chat.openai.com/*",
     "https://claude.ai/*",
     "https://chat.deepseek.com/*",
-    "https://gemini.google.com/*"
+    "https://gemini.google.com/*",
+    "https://ai-token-tracker.skysize.io/*",
+    "https://*.skysize.io/*"
   ],
   "content_scripts": [
     {

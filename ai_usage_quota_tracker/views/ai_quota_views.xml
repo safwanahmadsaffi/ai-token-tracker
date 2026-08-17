@@ -1,0 +1,22 @@
+<odoo>
+    <record id="view_ai_quota_config_tree" model="ir.ui.view">
+        <field name="name">ai.quota.config.tree</field>
+        <field name="model">ai.quota.config</field>
+        <field name="arch" type="xml">
+            <tree string="Quota Configurations">
+                <field name="provider"/>
+                <field name="user_id"/>
+                <field name="daily_limit"/>
+                <field name="usage_today"/>
+                <field name="percent_used" widget="progressbar"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_ai_quota_config" model="ir.actions.act_window">
+        <field name="name">Quota Config</field>
+        <field name="res_model">ai.quota.config</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

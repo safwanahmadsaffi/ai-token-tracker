@@ -1,0 +1,34 @@
+<odoo>
+    <record id="view_ai_usage_log_tree" model="ir.ui.view">
+        <field name="name">ai.usage.log.tree</field>
+        <field name="model">ai.usage.log</field>
+        <field name="arch" type="xml">
+            <tree string="AI Usage Logs" export_xlsx="1">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="user_id"/>
+                <field name="provider"/>
+                <field name="model_name"/>
+                <field name="tokens_used" sum="Total Tokens"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_ai_usage_log_pivot" model="ir.ui.view">
+        <field name="name">ai.usage.log.pivot</field>
+        <field name="model">ai.usage.log</field>
+        <field name="arch" type="xml">
+            <pivot string="AI Usage Analysis">
+                <field name="date" type="row" interval="day"/>
+                <field name="provider" type="col"/>
+                <field name="tokens_used" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_ai_usage_log" model="ir.actions.act_window">
+        <field name="name">Usage Logs</field>
+        <field name="res_model">ai.usage.log</field>
+        <field name="view_mode">tree,pivot,form</field>
+    </record>
+</odoo>

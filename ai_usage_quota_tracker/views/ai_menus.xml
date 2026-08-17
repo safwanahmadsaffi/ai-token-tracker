@@ -1,0 +1,5 @@
+<odoo>
+    <menuitem id="menu_ai_tracker_root" name="AI Tracker" sequence="10"/>
+    <menuitem id="menu_ai_usage" name="Usage Logs" parent="menu_ai_tracker_root" action="action_ai_usage_log" sequence="10"/>
+    <menuitem id="menu_ai_quota" name="Quotas" parent="menu_ai_tracker_root" action="action_ai_quota_config" sequence="20"/>
+</odoo>
